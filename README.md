@@ -1,1 +1,1 @@
-# vynrise1
+# VYNRise
