@@ -5,150 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VYNRise - Beranda Utama</title>
     <style>
-        /* Gaya Dasar Bertema Gaming & Neon */
+        /* Menggunakan Gambar Lobby VYNRise sebagai Background */
         body {
-            background-color: #0b0f19;
+            background-image: linear-gradient(rgba(13, 13, 13, 0.75), rgba(13, 13, 13, 0.75)), url('https://raw.githubusercontent.com/synopam/vynrise1/refs/heads/main/Picture.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 600px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Struktur Layout Menyamping (Asli) */
+        .main-layout {
+            display: flex;
+            max-width: 1000px;
+            width: 90%;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 50px;
+            padding: 40px 20px;
         }
 
-        h1 {
+        /* Sisi Kiri: Judul */
+        .brand-side {
+            flex: 1;
+            text-align: left;
+            position: sticky;
+            top: 25%;
+            background: rgba(13, 13, 13, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0, 255, 0, 0.1);
+        }
+
+        .brand-side h1 {
             color: #00ff00;
-            font-size: 3.5rem;
-            margin-bottom: 5px;
-            text-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
-            letter-spacing: 3px;
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
         }
 
         .status-tag {
             color: #ffcc00;
+            font-size: 1rem;
             font-weight: bold;
+            margin-top: 10px;
             letter-spacing: 1px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Sisi Kanan: Konten */
+        .content-side {
+            flex: 1.2;
+            text-align: left;
+            background: rgba(13, 13, 13, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        section {
+            margin-bottom: 20px;
         }
 
         h2 {
             color: #00ff00;
-            border-bottom: 2px dashed rgba(0, 255, 0, 0.3);
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        /* Gaya Tombol Neon */
+        p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+            margin: 25px 0;
+        }
+
+        /* Tombol Neon */
         .btn-neon {
             background: none;
-            border: 2px solid #00ff00;
+            border: 1px solid #00ff00;
             color: #00ff00;
-            padding: 15px 40px;
-            font-size: 1rem;
+            padding: 12px 30px;
+            font-size: 0.9rem;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-neon:hover {
-            background: #00ff00;
-            color: #0b0f19;
-            box-shadow: 0 0 30px #00ff00, 0 0 50px #00ff00;
+            background: rgba(0, 255, 0, 0.15);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
         }
 
-        .btn-link {
-            display: inline-block;
+        /* Tombol Discord */
+        .btn-discord {
+            display: inline-flex;
+            align-items: center;
             color: #ffffff;
             text-decoration: none;
-            margin: 10px 15px;
             padding: 12px 30px;
+            font-size: 0.9rem;
             font-weight: bold;
             border-radius: 4px;
-            background: #5865F2; /* Warna khas Discord */
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+            background: #5865F2;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.3);
             transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-link:hover {
+        .btn-discord:hover {
             background: #4752c4;
-            box-shadow: 0 0 25px #5865F2;
-            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.6);
         }
 
         #alert-msg {
             color: #00ff00;
+            font-size: 0.9rem;
+            margin-top: 12px;
             font-weight: bold;
-            margin-top: 15px;
-            min-height: 20px;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Responsif untuk HP agar tidak rusak */
+        @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .brand-side {
+                position: static;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .content-side {
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Judul Utama -->
-        <h1>VYNRise</h1>
-        <div class="status-tag">[ NEXT SEASON IS BREWING ]</div>
+    <div class="main-layout">
+        
+        <!-- SISI KIRI: BRANDING -->
+        <div class="brand-side">
+            <h1>VYNRise</h1>
+            <div class="status-tag">[ NEXT SEASON IS BREWING ]</div>
+        </div>
 
-        <!-- Bagian Aturan -->
-        <section>
-            <h2>## ATURAN</h2>
-            <p style="color: #bbb; line-height: 1.6;">
-                Sistem regulasi sedang disesuaikan dengan fitur gameplay terbaru. <br>
-                Aturan lengkap versi terbaru akan dirilis bersamaan dengan pembukaan season baru.
-            </p>
-        </section>
+        <!-- SISI KANAN: KONTEN UTAMA -->
+        <div class="content-side">
+            
+            <!-- Aturan -->
+            <section>
+                <h2>## ATURAN</h2>
+                <p>
+                    Sistem regulasi sedang disesuaikan dengan fitur gameplay terbaru.<br>
+                    Aturan lengkap versi terbaru akan dirilis bersamaan dengan pembukaan season baru.
+                </p>
+            </section>
 
-        <!-- Bagian Gabung & Salin IP -->
-        <section>
-            <h2>## GABUNG</h2>
-            <p style="color: #aaa; font-size: 0.95rem; margin-bottom: 20px;">
-                Server sedang mempersiapkan pembaruan besar. <br> Amankan slot bermainmu dengan menyalin IP di bawah ini!
-            </p>
-            <button onclick="copyIP()" class="btn-neon">⚡ SALIN IP SERVER</button>
-            <div id="alert-msg"></div>
-        </section>
+            <div class="divider"></div>
 
-        <!-- Bagian Komunitas (Hanya Discord) -->
-        <section>
-            <h2>## KOMUNITAS</h2>
-            <p style="color: #aaa; font-size: 0.95rem; margin-bottom: 15px;">
-                Seluruh koordinasi, info rilis, dan obrolan pemain kini dialihkan ke Discord resmi kami.
-            </p>
-            <!-- Ganti KODE_DISCORD dengan link undangan server Discord kamu -->
-            <a href="https://discord.gg" target="_blank" class="btn-link">💬 MASUK DISCORD SERVER</a>
-        </section>
+            <!-- Gabung -->
+            <section>
+                <h2>## GABUNG</h2>
+                <p>
+                    Server sedang mempersiapkan pembaruan besar.<br>
+                    Amankan slot bermainmu dengan menyalin IP di bawah ini!
+                </p>
+                <button onclick="copyIP()" class="btn-neon">⚡ SALIN IP SERVER</button>
+                <div id="alert-msg"></div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- Komunitas -->
+            <section>
+                <h2>## KOMUNITAS</h2>
+                <p>Seluruh koordinasi, info rilis, dan obrolan pemain kini dialihkan ke Discord resmi kami.</p>
+                <!-- Masukkan link undangan asli server Discord kamu di bawah ini -->
+                <a href="https://discord.gg" target="_blank" class="btn-discord">💬 MASUK DISCORD SERVER</a>
+            </section>
+
+        </div>
     </div>
 
     <script>
         function copyIP() {
-            // Menyalin alamat IP beserta Port-nya
             navigator.clipboard.writeText("play.vynrise.my.id:23020");
-            
-            // Menampilkan notifikasi sukses di layar
             var alertDiv = document.getElementById("alert-msg");
-            alertDiv.innerHTML = "✔ IP Berhasil Disalin! Silakan tempel di Minecraft kamu.";
-            
-            // Menghilangkan notifikasi setelah 3 detik
+            alertDiv.innerHTML = "✔ IP Berhasil Disalin! Silakan tempel di Minecraft.";
             setTimeout(function() {
                 alertDiv.innerHTML = "";
             }, 3000);
