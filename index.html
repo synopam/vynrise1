@@ -5,240 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VYNRise - Beranda Utama</title>
     <style>
+        /* Gaya Dasar Bertema Gaming & Neon */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            
-            /* 🌐 TAUTAN RAW YANG BENAR DAN ANTI-BLOKIR */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url('https://raw.githubusercontent.com/synopam/VYNRise/refs/heads/main/Picture.png');
-            
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-color: #0b0914;
-            
+            background-color: #0b0f19;
             color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
             margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
 
-        /* ⬛ BARISAN JUDUL ATAS (BLACK HEADER) */
-        .top-header {
-            background-color: #000000;
-            width: 100%;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 28px;
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: #00ff00;
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+            letter-spacing: 3px;
+        }
+
+        .status-tag {
+            color: #ffcc00;
             font-weight: bold;
-            letter-spacing: 2px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-        }
-
-        /* AREA KONTEN UTAMA DI TENGAH */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Memaksa kotak menempel pas di atas lantai kayu lobi */
-            align-items: center;
-            padding-bottom: 70px; 
-        }
-
-        /* KONTAINER 3 KOTAK UTAMA BERJEJER */
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            width: 90%;
-            max-width: 1000px;
-        }
-
-        /* STRUKTUR DASAR KOTAK MENU */
-        .card-menu {
-            flex: 1;
-            background-color: rgba(20, 17, 37, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: transform 0.2s ease;
-        }
-        .card-menu:hover {
-            transform: translateY(-5px);
-        }
-        .card-menu h2 {
-            margin: 0 0 15px 0;
-            font-size: 22px;
             letter-spacing: 1px;
-            font-weight: 800;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
         }
 
-        /* 🟠 KOTAK ORANYE (ATURAN) */
-        .box-orange {
-            border: 3px solid #ff9800;
-            box-shadow: 0 0 15px rgba(255, 152, 0, 0.2);
+        h2 {
+            color: #00ff00;
+            border-bottom: 2px dashed rgba(0, 255, 0, 0.3);
+            padding-bottom: 10px;
+            margin-top: 40px;
         }
-        .box-orange h2 { color: #ff9800; }
 
-        /* 🔵 KOTAK BIRU (GABUNG) */
-        .box-blue {
-            border: 3px solid #2196f3;
-            box-shadow: 0 0 15px rgba(33, 150, 243, 0.3);
-        }
-        .box-blue h2 { color: #2196f3; }
-
-        /* 🟢 KOTAK HIJAU (KOMUNITAS) */
-        .box-green {
-            border: 3px solid #4caf50;
-            box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
-        }
-        .box-green h2 { color: #4caf50; }
-
-        /* WADAH ISI DI DALAM KOTAK */
-        .box-inner-content {
-            font-size: 13px;
-            color: #e2e8f0;
-            line-height: 1.6;
-            text-align: left;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 12px;
-            border-radius: 8px;
-            min-height: 110px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        #isiAturan {
-            white-space: pre-wrap;
-            margin: 0;
-            padding: 0;
-            max-height: 110px;
-            overflow-y: auto;
-            font-family: inherit;
-        }
-        
-        /* GAYA TOMBOL KLIK DI DALAM KOTAK */
-        .action-link {
-            display: block;
-            text-align: center;
-            color: white;
-            text-decoration: none;
+        /* Gaya Tombol Neon */
+        .btn-neon {
+            background: none;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 15px 40px;
+            font-size: 1rem;
             font-weight: bold;
-            font-size: 12px;
-            padding: 12px;
-            border-radius: 6px;
             text-transform: uppercase;
-            transition: opacity 0.2s;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            transition: all 0.3s ease;
         }
-        .action-link:hover { opacity: 0.9; }
-        
-        .btn-orange-style { background: #ff9800; color: #000; }
-        .btn-blue-goto { background: linear-gradient(135deg, #007acc, #2196f3); } 
-        .btn-discord-style { background: #5865F2; margin-bottom: 6px; }
-        .btn-wa-style { background: #25D366; }
 
-        /* TOAST NOTIFIKASI POP-UP */
-        .toast {
-            visibility: hidden;
-            background-color: #1e1b4b;
-            color: #e9d5ff;
-            border: 1px solid #6b21a8;
-            text-align: center;
-            border-radius: 8px;
-            padding: 12px 24px;
-            position: fixed;
-            z-index: 10;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 13px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        .btn-neon:hover {
+            background: #00ff00;
+            color: #0b0f19;
+            box-shadow: 0 0 30px #00ff00, 0 0 50px #00ff00;
         }
-        .toast.show { visibility: visible; }
 
-        /* 📱 PERBAIKAN RESPONSIVITAS KHUSUS UNTUK HP */
-        @media (max-width: 768px) {
-            .top-header { font-size: 22px; padding: 10px 0; }
-            .main-content { padding: 15px; padding-bottom: 40px; justify-content: center; }
-            .menu-container { flex-direction: column; gap: 15px; width: 100%; }
-            .card-menu { width: 100%; box-sizing: border-box; padding: 15px 12px; }
-            .card-menu h2 { font-size: 18px; margin-bottom: 10px; }
-            .box-inner-content { min-height: auto; font-size: 12px; }
-            .action-link { padding: 10px; font-size: 11px; }
+        .btn-link {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 10px 15px;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 4px;
+            background: #5865F2; /* Warna khas Discord */
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-link:hover {
+            background: #4752c4;
+            box-shadow: 0 0 25px #5865F2;
+            transform: scale(1.05);
+        }
+
+        #alert-msg {
+            color: #00ff00;
+            font-weight: bold;
+            margin-top: 15px;
+            min-height: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ⬛ BLACK HEADER ATAS -->
-    <div class="top-header">VYNRise</div>
+    <div class="container">
+        <!-- Judul Utama -->
+        <h1>VYNRise</h1>
+        <div class="status-tag">[ NEXT SEASON IS BREWING ]</div>
 
-    <!-- AREA UTAMA -->
-    <div class="main-content">
-        <div class="menu-container">
-            
-            <!-- 🟠 KOTAK ORANYE: ATURAN -->
-            <div class="card-menu box-orange">
-                <h2>ATURAN</h2>
-                <div class="box-inner-content">
-                    <pre id="isiAturan">Memuat aturan server...</pre>
-                </div>
-                <a href="#" onclick="showToast('Selamat bermain, patuhi selalu aturan ya!'); return false;" class="action-link btn-orange-style" style="margin-top: 10px;">Saya Mengerti</a>
-            </div>
+        <!-- Bagian Aturan -->
+        <section>
+            <h2>## ATURAN</h2>
+            <p style="color: #bbb; line-height: 1.6;">
+                Sistem regulasi sedang disesuaikan dengan fitur gameplay terbaru. <br>
+                Aturan lengkap versi terbaru akan dirilis bersamaan dengan pembukaan season baru.
+            </p>
+        </section>
 
-            <!-- 🔵 KOTAK BIRU: GABUNG -->
-            <div class="card-menu box-blue">
-                <h2>GABUNG</h2>
-                <div class="box-inner-content">
-                    <a href="masuk.html" class="action-link btn-blue-goto">⚡ MASUK SERVER</a>
-                </div>
-            </div>
+        <!-- Bagian Gabung & Salin IP -->
+        <section>
+            <h2>## GABUNG</h2>
+            <p style="color: #aaa; font-size: 0.95rem; margin-bottom: 20px;">
+                Server sedang mempersiapkan pembaruan besar. <br> Amankan slot bermainmu dengan menyalin IP di bawah ini!
+            </p>
+            <button onclick="copyIP()" class="btn-neon">⚡ SALIN IP SERVER</button>
+            <div id="alert-msg"></div>
+        </section>
 
-            <!-- 🟢 KOTAK HIJAU: KOMUNITAS -->
-            <div class="card-menu box-green">
-                <h2>KOMUNITAS</h2>
-                <div class="box-inner-content">
-                    <a href="https://discord.com/invite/VZkssCmMa" target="_blank" class="action-link btn-discord-style">Discord Server</a>
-                    <a href="https://chat.whatsapp.com/K67MmEjiLrP8dxPFqUltmB" target="_blank" class="action-link btn-wa-style">Grup WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
+        <!-- Bagian Komunitas (Hanya Discord) -->
+        <section>
+            <h2>## KOMUNITAS</h2>
+            <p style="color: #aaa; font-size: 0.95rem; margin-bottom: 15px;">
+                Seluruh koordinasi, info rilis, dan obrolan pemain kini dialihkan ke Discord resmi kami.
+            </p>
+            <!-- Ganti KODE_DISCORD dengan link undangan server Discord kamu -->
+            <a href="https://discord.gg" target="_blank" class="btn-link">💬 MASUK DISCORD SERVER</a>
+        </section>
     </div>
 
-    <div id="toast" class="toast">Menghubungkan...</div>
-
     <script>
-        // Memuat aturan secara live dari GitHub Anda dengan tautan raw yang benar
-        async function loadAturan() {
-            const urlAturan = "https://raw.githubusercontent.com/synopam/VYNRise/refs/heads/main/aturan.txt";
-            try {
-                const response = await fetch(urlAturan);
-                if (response.ok) {
-                    const textData = await response.text();
-                    document.getElementById("isiAturan").innerText = textData;
-                } else {
-                    document.getElementById("isiAturan").innerText = "1. Jangan menggunakan Cheat\n2. Jangan Griefing Base\n3. Hormati sesama Player.";
-                }
-            } catch (error) {
-                document.getElementById("isiAturan").innerText = "1. Jangan menggunakan Cheat\n2. Jangan Griefing Base\n3. Hormati sesama Player.";
-            }
+        function copyIP() {
+            // Menyalin alamat IP beserta Port-nya
+            navigator.clipboard.writeText("play.vynrise.my.id:23020");
+            
+            // Menampilkan notifikasi sukses di layar
+            var alertDiv = document.getElementById("alert-msg");
+            alertDiv.innerHTML = "✔ IP Berhasil Disalin! Silakan tempel di Minecraft kamu.";
+            
+            // Menghilangkan notifikasi setelah 3 detik
+            setTimeout(function() {
+                alertDiv.innerHTML = "";
+            }, 3000);
         }
-
-        function showToast(msg) {
-            const toast = document.getElementById("toast");
-            toast.innerText = msg;
-            toast.className = "toast show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-
-        loadAturan();
     </script>
+
 </body>
 </html>
