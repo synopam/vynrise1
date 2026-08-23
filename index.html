@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda - Nyxrise Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #08040f;
+      --line-color: #ffffff;
+      --purple-accent: #c084fc;
+      --text-muted: #e4e4e7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Navigation / Header - Logo diposisikan mentok ke kiri */
+    header {
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 100;
+      width: 100%;
+    }
+
+    .brand-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-accent);
+    }
+
+    /* Hamburger Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 5px;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Garis Pembatas Putih Glow */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background-color: var(--line-color);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    /* AREA UTAMA / HERO SECTION */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+      background: linear-gradient(to bottom, rgba(8, 4, 15, 0.85) 0%, rgba(8, 4, 15, 0.95) 100%), 
+                  url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?w=1200') no-repeat center center;
+      background-size: cover;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--purple-accent);
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Tombol Aksi (Jarak Pas untuk PC) */
+    .btn-container {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--purple-accent);
+      color: #08040f;
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.7);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* TOMBOL SCROLL KE BAWAH */
+    .scroll-down {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .scroll-down:hover {
+      color: var(--purple-accent);
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--purple-accent);
+      border-bottom: 2px solid var(--purple-accent);
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+      }
+      40% {
+        transform: translateY(8px) rotate(45deg);
+      }
+      60% {
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+
+    /* KONTEN DITAMBAHKAN DI BAWAH */
+    .extra-section {
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-title span {
+      color: var(--purple-accent);
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
+    }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .extra-card {
+      background: rgba(18, 9, 33, 0.65);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .extra-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--purple-accent);
+    }
+
+    .extra-card h3 {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+    }
+
+    .extra-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1rem 1.5rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+
+    /* RESPONSIVE MOBILE (HP) */
+    @media (max-width: 768px) {
+      header {
+        padding: 0.8rem 1rem;
+      }
+
+      .brand-title {
+        font-size: 1.6rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 4, 15, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem;
+        border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+        gap: 1rem;
+        text-align: center;
+        z-index: 99;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      /* Penyesuaian tombol di layar HP */
+      .btn-container {
+        gap: 0.8rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .scroll-down {
+        bottom: 15px;
+      }
+
+      .extra-section {
+        padding: 2.5rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <a href="index.html" class="brand-title">Nyxrise</a>
+    
+    <!-- Tombol Garis 3 -->
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="fitur.html">Fitur</a></li>
+      <li><a href="discord.html">Discord</a></li>
+    </ul>
+  </header>
+
+  <!-- Garis Pembatas Atas -->
+  <div class="divider"></div>
+
+  <!-- AREA HERO / TAMPILAN UTAMA -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Selamat Datang di <span>Nyxrise Network</span></h1>
+      <p>Server Minecraft Survival Cross-Platform dengan fitur terlengkap! Didukung AuraSkills, Ekonomi Lelang, Voice Chat, dan Komunitas yang Ramah.</p>
+      
+      <div class="btn-container">
+        <a href="gabung.html" class="btn btn-primary">Gabung Sekarang</a>
+        <a href="fitur.html" class="btn btn-secondary">Lihat Fitur</a>
+        <a href="discord.html" class="btn btn-secondary">Join Discord</a>
+      </div>
+    </div>
+
+    <!-- Tombol Scroll ke Bawah -->
+    <a href="#informasi-tambahan" class="scroll-down" aria-label="Scroll ke bawah">
+      <span>Scroll Ke Bawah</span>
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- Garis Pembatas Tengah -->
+  <div class="divider"></div>
+
+  <!-- AREA TAMBAHAN DI BAWAH -->
+  <main class="extra-section" id="informasi-tambahan">
+    <h2 class="section-title">Informasi <span>Server</span></h2>
+
+    <div class="extra-grid">
+      <div class="extra-card">
+        <h3>📌 Cara Bergabung</h3>
+        <p>Klik tombol <strong>Gabung Sekarang</strong> di atas untuk melihat panduan lengkap masuk dari Java Edition maupun Bedrock Edition (HP/Console).</p>
+      </div>
+
+      <div class="extra-card">
+        <h3>⚙️ Spesifikasi & Performa</h3>
+        <p>Server dijalankan dengan Paper Engine untuk memastikan TPS tetap 20.0 stabil walau diakses dari Java maupun Bedrock.</p>
+      </div>
+
+      <div class="extra-card">
+        <h3>💬 Dukungan Komunitas</h3>
+        <p>Bergabunglah dengan komunitas Discord kami untuk mendapatkan bantuan, info update, event harian, dan teman bertualang.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Garis Pembatas Bawah -->
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nyxrise Network. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT KONTROL MENU GARIS 3 -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

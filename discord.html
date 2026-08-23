@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord - Nyxrise Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #08040f;
+      --line-color: #ffffff;
+      --purple-accent: #c084fc;
+      --text-muted: #e4e4e7;
+      --discord-color: #5865F2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Navigation / Header */
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-accent);
+    }
+
+    /* Hamburger Menu Button (Khusus HP) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 2px;
+    }
+
+    /* Garis Pembatas Putih Glow */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background-color: var(--line-color);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    /* AREA UTAMA */
+    main {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+      background: linear-gradient(to right, rgba(8, 4, 15, 0.95) 0%, rgba(8, 4, 15, 0.75) 45%, rgba(8, 4, 15, 0.2) 100%), 
+                  url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?w=1200') no-repeat center center;
+      background-size: cover;
+    }
+
+    /* Kartu Komunitas Discord */
+    .discord-card {
+      max-width: 500px;
+      width: 100%;
+      padding: 2.5rem;
+      background: rgba(18, 9, 33, 0.75);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                  0 0 40px rgba(168, 85, 247, 0.15);
+      text-align: center;
+    }
+
+    .discord-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+      fill: var(--discord-color);
+      filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.5));
+    }
+
+    .discord-card h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .discord-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .btn-discord {
+      display: inline-block;
+      width: 100%;
+      background: var(--discord-color);
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4);
+    }
+
+    .btn-discord:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(88, 101, 242, 0.6);
+      background: #4752c4;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.2rem 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      .brand-title { font-size: 1.8rem; }
+      .menu-toggle { display: flex; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 4, 15, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+        gap: 1.2rem;
+        text-align: center;
+      }
+
+      .nav-links.active { display: flex; }
+      .discord-card { padding: 1.8rem; }
+      .discord-card h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <a href="index.html" class="brand-title">Nyxrise</a>
+    
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="fitur.html">Fitur</a></li>
+      <li><a href="discord.html" class="active">Discord</a></li>
+    </ul>
+  </header>
+
+  <!-- Garis Pembatas Atas -->
+  <div class="divider"></div>
+
+  <!-- AREA KONTEN UTAMA -->
+  <main>
+    <div class="discord-card">
+      <svg class="discord-icon" viewBox="0 0 127.14 96.36">
+        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0,-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.68,1.76,1.36,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53S36,40.3,42.45,40.3C48.92,40.3,54,46,53.89,53,53.89,60,48.92,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.08-12.7,11.44-12.7C91.17,40.3,96.26,46,96.14,53,96.14,60,91.17,65.69,84.69,65.69Z"/>
+      </svg>
+      <h2>Komunitas Discord</h2>
+      <p>Bergabunglah dengan server Discord resmi Nyxrise Network untuk mendapatkan pembaruan berita, berdiskusi dengan sesama pemain, dan bantuan tim bantuan.</p>
+      <a href="https://discord.gg/Je6YWYmCPY" target="_blank" class="btn-discord">Gabung Discord</a>
+    </div>
+  </main>
+
+  <!-- Garis Pembatas Bawah -->
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nyxrise Network. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle Menu Navigasi di HP
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

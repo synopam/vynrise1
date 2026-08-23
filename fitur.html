@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitur - Nyxrise Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #08040f;
+      --line-color: #ffffff;
+      --purple-accent: #c084fc;
+      --text-muted: #e4e4e7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Navigation / Header */
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-accent);
+    }
+
+    /* Hamburger Menu Button (Tombol Garis 3) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 5px;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Garis Pembatas Putih Glow */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background-color: var(--line-color);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    /* AREA UTAMA KONTEN FITUR */
+    main {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+      background: linear-gradient(to bottom, rgba(8, 4, 15, 0.9) 0%, rgba(8, 4, 15, 0.7) 100%), 
+                  url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?w=1200') no-repeat center center;
+      background-size: cover;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-title span {
+      color: var(--purple-accent);
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
+    }
+
+    /* Grid Fitur */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* Kartu Fitur */
+    .feature-card {
+      background: rgba(18, 9, 33, 0.65);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--purple-accent);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #ffffff;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1rem 1.5rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+
+    /* --- TAMPILAN OPTIMAL & FIX GARIS 3 UNTUK MOBILE (HP) --- */
+    @media (max-width: 768px) {
+      header {
+        padding: 0.8rem 1.2rem;
+      }
+
+      .brand-title {
+        font-size: 1.6rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 4, 15, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem;
+        border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+        gap: 1rem;
+        text-align: center;
+        z-index: 99;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .feature-card {
+        padding: 1.2rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .feature-card p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <a href="index.html" class="brand-title">Nyxrise</a>
+    
+    <!-- Tombol Garis 3 -->
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="fitur.html" class="active">Fitur</a></li>
+      <li><a href="discord.html">Discord</a></li>
+    </ul>
+  </header>
+
+  <!-- Garis Pembatas Atas -->
+  <div class="divider"></div>
+
+  <!-- AREA KONTEN UTAMA -->
+  <main>
+    <h2 class="section-title">Fitur Server <span>Nyxrise</span></h2>
+
+    <div class="features-grid">
+      <!-- AuraSkills -->
+      <div class="feature-card">
+        <div class="feature-icon">⚔️</div>
+        <h3>Leveling & AuraSkills</h3>
+        <p>Tingkatkan level skill seperti Farming, Mining, dan Fighting untuk mendapatkan statistik serta bonus kemampuan karaktermu.</p>
+      </div>
+
+      <!-- Crossplay (Geyser + Floodgate + SkinsRestorer) -->
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Cross-Play & Custom Skin</h3>
+        <p>Dukungan penuh Java & Bedrock (PE). Didukung pemulihan skin otomatis agar skin milikmu tetap terlihat oleh semua pemain.</p>
+      </div>
+
+      <!-- GriefPrevention & WorldGuard -->
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Land Claim & Anti-Grief</h3>
+        <p>Gunakan sistem klaim wilayah untuk mengamankan bangunan, chest, dan area pribadi milikmu dari pemain lain.</p>
+      </div>
+
+      <!-- Economy, AuctionHouse, Shop -->
+      <div class="feature-card">
+        <div class="feature-icon">🛒</div>
+        <h3>Ekonomi & Pasar Lelang</h3>
+        <p>Nikmati Shop GUI interaktif, sistem Pekerjaan (Jobs), serta Rumah Lelang (Auction House) untuk berjualan dengan sesama pemain.</p>
+      </div>
+
+      <!-- VoiceChat & Community -->
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>Proximity Voice Chat</h3>
+        <p>Berkomunikasi langsung secara audio dengan pemain yang berada di dekatmu dalam game untuk petualangan yang lebih seru.</p>
+      </div>
+
+      <!-- ExcellentCrates, Kits, BetterRTP -->
+      <div class="feature-card">
+        <div class="feature-icon">🎁</div>
+        <h3>Crates, Kits & Teleport</h3>
+        <p>Dapatkan hadiah eksklusif dari Crate, klaim starter kit harian, dan gunakan BetterRTP untuk berteleportasi acak ke area petualangan baru.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Garis Pembatas Bawah -->
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nyxrise Network. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT KONTROL MENU GARIS 3 -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
